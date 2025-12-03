@@ -1,0 +1,31 @@
+name: Monthly Transport Scan
+
+on:
+  schedule:
+    # Runs at 08:00 UTC on the 1st of every month
+    - cron: '0 8 1 * *'
+  # Allows you to click "Run Now" manually for testing
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Script
+        env:
+          GCP_KEYS: ${{ secrets.GCP_KEYS }}
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+        run: python main.py
