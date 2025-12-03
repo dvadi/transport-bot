@@ -10,7 +10,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 # ---------------- CONFIGURATION ----------------
-SHEET_NAME = 'Transportation Report'
+SHEET_NAME = 'Transportation Data V2'
 SHEET_URL = "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID_HERE" # Optional: For the email link
 BASE_URL = "https://data.transportation.gov/api/views/9mw4-x3tu/rows.csv"
 FILTER_DATE_KEY = 'DISP_DECIDED_DATE'
